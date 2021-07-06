@@ -36,6 +36,12 @@ const NoteInputModal = ({ visible, onClose, onSubmit }) => {
         onClose();
     };
 
+    const closeModal = () =>{
+        setTitle('');
+        setDesc('');
+        onClose();
+    };
+
     return (
         <>
         <StatusBar hidden />
@@ -56,7 +62,13 @@ const NoteInputModal = ({ visible, onClose, onSubmit }) => {
                 />
                 <View style={styles.btnContainer}>
                     <RoundIconBtn size={15} antIconName='check' onPress={handleSubmit}/>
-                    <RoundIconBtn size={15} style={{marginLeft:15}} antIconName='close' />
+
+                    { title.trim() || desc.trim() ? <RoundIconBtn 
+                        size={15} 
+                        style={{marginLeft:15}} 
+                        antIconName='close'
+                        onPress={closeModal} 
+                    /> : null }
                 </View>
             </View>
             <TouchableWithoutFeedback onPress={handleModalClose}>
