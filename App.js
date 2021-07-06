@@ -1,16 +1,27 @@
-import * as React from "react";
-import { View, Text } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import Intro  from "./app/screens/Intro";
+
 
 export default function App() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
-  );
+  
+  const findUser = async () => {
+    const result = await AsyncStorage.getItem('user');
+    console.log(result);
+  }
+  
+  useEffect(()=>{
+    findUser()
+  },[])
+  return <Intro/>;
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor:'#fff',
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
