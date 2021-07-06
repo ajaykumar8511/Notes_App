@@ -21,18 +21,19 @@ const NoteScreen = ({ user }) => {
     };
 
     const findNotes = async () => {
-       const result = await AsyncStorage.getItem('notes');
-       if (result !== null) setNotes(JSON.parse(result));
+        const result = await AsyncStorage.getItem('notes');
+        if (result !== null) setNotes(JSON.parse(result));
     };
 
     useEffect(() => {
+        // AsyncStorage.clear()
         findNotes()
         findGreet()
     }, []);
 
     const handleOnSubmit = async (title, desc) => {
-        
-        const note = {id: Date.now(), title, desc, time: Date.now() };
+
+        const note = { id: Date.now(), title, desc, time: Date.now() };
         const updatedNotes = [...notes, note];
         setNotes(updatedNotes)
         await AsyncStorage.setItem('notes', JSON.stringify(updatedNotes))
@@ -41,32 +42,45 @@ const NoteScreen = ({ user }) => {
     return (
         <>
             <StatusBar barStyle='dark-content' backgroundColor={colors.LIGHT} />
-            
+
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 <View style={styles.container}>
                     <Text style={styles.header}>{`Good ${greet} ${user.name}`}</Text>
                     
-                    <SearchBar containerStyle={{ marginVertical: 15 }} />
+                    {notes.length ? ( 
+                        <SearchBar containerStyle={{ marginVertical: 15 }} />
+                    ): null}
                     
-                    <FlatList 
-                        data={notes} 
-                        keyExtractor={item => item.id.toString()} 
-                        renderItem={({item}) => <Note item={item} /> } 
+                    <FlatList
+                        data={notes}
+                        numColumns={2}
+                        columnWrapperStyle={{
+                            justifyContent:'space-between',
+                            marginBottom:15
+                        }}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={({ item }) => <Note item={item} />}
                     />
                     
-                    <View style={[StyleSheet.absoluteFillObject, styles.emptyHeaderContainer]}>
+                    {!notes.length ? <View 
+                        style={[
+                            StyleSheet.absoluteFillObject, 
+                            styles.emptyHeaderContainer
+                            ]}>
+                        
                         <Text style={styles.emptyHeader}>Add Notes</Text>
-                        <RoundIconBtn 
-                            onPress={() => setModalVisible(true)} 
-                            antIconName='plus' 
-                            style={styles.addBtn} />
-                    </View>
+                    </View> : null}
+                    
                 </View>
             </TouchableWithoutFeedback>
 
-            
-            <NoteInputModal 
-                visible={modalVisible} 
+            <RoundIconBtn
+                onPress={() => setModalVisible(true)}
+                antIconName='plus'
+                style={styles.addBtn} />
+
+            <NoteInputModal
+                visible={modalVisible}
                 onClose={() => setModalVisible(false)}
                 onSubmit={handleOnSubmit}
             />
@@ -79,7 +93,7 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 20,
         flex: 1,
-        zIndex:1,
+        zIndex: 1,
     },
     header: {
         fontSize: 25,
@@ -98,9 +112,9 @@ const styles = StyleSheet.create({
         zIndex: -1,
     },
     addBtn: {
-        position:'absolute',
-        right:15,
-        bottom:50,
+        position: 'absolute',
+        right: 15,
+        bottom: 50,
     },
 });
 

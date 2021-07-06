@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import colors from '../misc/colors';
 
 
 const Note = ({item}) => {
@@ -7,20 +8,27 @@ const Note = ({item}) => {
 
     return (
         <View style={styles.container}>
-            <Text>{title}</Text>
-            <Text>{desc}</Text>
+            <Text style={styles.title} numberOfLines={2} >{title}</Text>
+            <Text style={styles.desc} numberOfLines={3} >{desc}</Text>
         </View>
     );
 };
 
+const width = Dimensions.get('window').width - 40;
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // backgroundColor: '#2c3e50',
+        backgroundColor: colors.PRIMARY,
+        width: width / 2 - 10,
+        padding: 8,
+        borderRadius: 10,
     },
+    title:{
+        fontWeight: 'bold',
+        fontSize:17,
+        color: colors.LIGHT,
+    },
+    desc:{},
 });
 
 
