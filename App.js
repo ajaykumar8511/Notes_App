@@ -1,20 +1,28 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Intro  from "./app/screens/Intro";
+import NoteScreen from "./app/screens/NoteScreen";
 
 
 export default function App() {
   
+  const [user, setUser] = useState({})
+
   const findUser = async () => {
     const result = await AsyncStorage.getItem('user');
-    console.log(result);
+    if (result !== null) {
+      setUser(JSON.parse(result));
+    }
   }
   
   useEffect(()=>{
     findUser()
+    // AsyncStorage.clear();
   },[])
-  return <Intro/>;
+
+  if (!user.name) return <Intro onFinish={findUser}/>;
+  return <NoteScreen user={user} />;
 }
 
 const styles = StyleSheet.create({

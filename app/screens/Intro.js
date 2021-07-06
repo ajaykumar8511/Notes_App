@@ -11,13 +11,14 @@ import colors from '../misc/colors';
 import RoundIconBtn from "../components/RoundIconBtn";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Intro = () => {
+const Intro = ({onFinish}) => {
     const [name, setName] = useState('');
     const handleOnChangeText = (text) => setName(text);
     
     const handleSubmit = async () => {
         const user = {name: name}
         await AsyncStorage.setItem('user', JSON.stringify(user))
+        if (onFinish) onFinish();
     }
         
 
@@ -34,7 +35,7 @@ const Intro = () => {
                 style={styles.textInput}
             />
         
-            {name.trim().length >= 3 ? (
+            {name.trim().length >= 1 ? (
                 <RoundIconBtn antIconName='arrowright' onPress={handleSubmit} />
             ) : null} 
         </View>
