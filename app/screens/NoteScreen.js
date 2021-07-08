@@ -1,19 +1,23 @@
 import React, { useEffect, useState, } from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableWithoutFeedback, Keyboard, FlatList } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import colors from '../misc/colors';
 import SearchBar from "../components/SearchBar";
 import RoundIconBtn from "../components/RoundIconBtn";
 import NoteInputModal from '../components/NoteInputModal';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Note from "../components/Note";
+import NotFound from "../components/NotFound";
 import { useNotes } from '../contexts/NoteProvider';
 
 
-const NoteScreen = ({ user, navigation  }) => {
+const NoteScreen = ({ user, navigation }) => {
 
     const [greet, setGreet] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
-    const {notes, setNotes} = useNotes()
+    const [searchQuery, setSearchQuery] = useState('');
+    const [resultNotFound, setResultNotFound] = useState(false);
+
+    const { notes, setNotes, findNotes } = useNotes()
 
     const findGreet = () => {
         const hrs = new Date().getHours()
@@ -22,7 +26,6 @@ const NoteScreen = ({ user, navigation  }) => {
         setGreet('Evening')
     };
 
-    
 
     useEffect(() => {
         // AsyncStorage.clear()
@@ -38,7 +41,35 @@ const NoteScreen = ({ user, navigation  }) => {
     }
 
     const openNote = (note) => {
-        navigation.navigate('NoteDetail', {note})
+        navigation.navigate('NoteDetail', { note })
+    }
+
+    const handleOnSearchInput = async text => {
+        setSearchQuery(text);
+        if (!text.trim()) {
+            setSearchQuery('');
+            setResultNotFound(false);
+            return await findNotes();
+        }
+        const filteredNotes = notes.filter(note => {
+            if (note.title.toLowerCase().includes(text.toLowerCase())) {
+                return note;
+            }
+        })
+
+        if (filteredNotes.length) {
+            setNotes([...filteredNotes]);
+        } else {
+            setResultNotFound(true);
+        }
+    }
+
+    const handleOnClear = async () => {
+
+        setSearchQuery('')
+        setResultNotFound(false)
+        await findNotes()
+
     }
 
     return (
@@ -48,31 +79,39 @@ const NoteScreen = ({ user, navigation  }) => {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 <View style={styles.container}>
                     <Text style={styles.header}>{`Good ${greet} ${user.name}`}</Text>
-                    
-                    {notes.length ? ( 
-                        <SearchBar containerStyle={{ marginVertical: 15 }} />
-                    ): null}
-                    
-                    <FlatList
-                        data={notes}
-                        numColumns={2}
-                        columnWrapperStyle={{
-                            justifyContent:'space-between',
-                            marginBottom:15
-                        }}
-                        keyExtractor={item => item.id.toString()}
-                        renderItem={({ item }) => <Note onPress={() => openNote(item)} item={item} />}
-                    />
-                    
-                    {!notes.length ? <View 
+
+                    {notes.length ? (
+                        <SearchBar
+                            value={searchQuery}
+                            onChangeText={handleOnSearchInput}
+                            containerStyle={{ marginVertical: 15 }}
+                            onClear={handleOnClear}
+                        />
+                    ) : null}
+
+                    {resultNotFound ? <NotFound /> : <FlatList
+                            data={notes}
+                            numColumns={2}
+                            columnWrapperStyle={{
+                                justifyContent: 'space-between',
+                                marginBottom: 15
+                            }}
+                            keyExtractor={item => item.id.toString()}
+                            renderItem={({ item }) => <Note onPress={() => openNote(item)} item={item} />}
+                        />
+                    }
+
+
+
+                    {!notes.length ? <View
                         style={[
-                            StyleSheet.absoluteFillObject, 
+                            StyleSheet.absoluteFillObject,
                             styles.emptyHeaderContainer
-                            ]}>
-                        
+                        ]}>
+
                         <Text style={styles.emptyHeader}>Add Notes</Text>
                     </View> : null}
-                    
+
                 </View>
             </TouchableWithoutFeedback>
 
@@ -117,7 +156,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 15,
         bottom: 50,
-        zIndex:1,
+        zIndex: 1,
     },
 });
 

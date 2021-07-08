@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { AntDesign } from "@expo/vector-icons";
 import colors from '../misc/colors';
 
-const SearchBar = ({containerStyle}) => {
+const SearchBar = ({containerStyle, value, onChangeText, onClear}) => {
     return (
         <View style={[styles.container, {...containerStyle}]}>
-            <TextInput style={styles.searchBar} placeholder='Search Here...'/>
+            <TextInput 
+                value={value} 
+                onChangeText={onChangeText} 
+                style={styles.searchBar} 
+                placeholder='Search Here...'
+            />
+            {value ? (<AntDesign 
+                name='close' 
+                size={20} 
+                color={colors.PRIMARY} 
+                onPress={onClear}
+                style={styles.clearIcon}
+            />) : null }
         </View>
     );
 }; 
@@ -20,7 +33,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         
     },
-    container: {},
+    clearIcon: {
+        position:'absolute',
+        right:10,
+    },
+    container: {
+        justifyContent:'center',
+    },
 });
 
 export default SearchBar;
