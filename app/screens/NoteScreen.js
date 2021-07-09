@@ -112,8 +112,6 @@ const NoteScreen = ({ user, navigation }) => {
                         />
                     }
 
-
-
                     {!notes.length ? <View
                         style={[
                             StyleSheet.absoluteFillObject,
@@ -122,7 +120,6 @@ const NoteScreen = ({ user, navigation }) => {
 
                         <Text style={styles.emptyHeader}>Add Notes</Text>
                     </View> : null}
-
                 </View>
             </TouchableWithoutFeedback>
 
@@ -150,6 +147,8 @@ const styles = StyleSheet.create({
     header: {
         fontSize: 25,
         fontWeight: 'bold',
+        marginLeft:10,
+        marginTop:10,
     },
     emptyHeader: {
         fontSize: 30,

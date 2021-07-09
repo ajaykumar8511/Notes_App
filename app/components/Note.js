@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-nati
 import colors from '../misc/colors';
 
 
-const Note = ({item, onPress}) => {
-    const {title, desc} = item;
+const Note = ({ item, onPress }) => {
+    const { title, desc } = item;
 
     return (
         <TouchableOpacity onPress={onPress} style={styles.container}>
@@ -22,13 +22,24 @@ const styles = StyleSheet.create({
         width: width / 2 - 10,
         padding: 8,
         borderRadius: 10,
+
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
     },
-    title:{
+    title: {
         fontWeight: 'bold',
-        fontSize:17,
+        fontSize: 17,
         color: colors.LIGHT,
     },
-    desc:{},
+    desc: {},
 });
 
 

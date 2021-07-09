@@ -25,13 +25,22 @@ const SearchBar = ({containerStyle, value, onChangeText, onClear}) => {
 
 const styles = StyleSheet.create({
     searchBar: {
-        borderWidth: 0.5,
+        borderWidth: 1,
         borderColor: colors.PRIMARY,
         height:40,
         borderRadius:40,
         paddingLeft:10,
-        fontSize: 18,
+        fontSize: 16,
         
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
     },
     clearIcon: {
         position:'absolute',

@@ -1,44 +1,103 @@
-# My Universal React Project
 
-<p>
+<br />
+<p align="center">
+  <a href="">
+    <img src="img\NotesByAJ.png" alt="Logo" width="150" \>
+  </a>
+
+  <h3 align="center"> <b> Notes </b> 📝</h3>
+
+  <p align="center">
+    The ReactNative Project    
+  </p>
+
+  <p align="center">
   <!-- iOS -->
-  <a href="https://itunes.apple.com/app/apple-store/id982107779">
+  <a href="#">
     <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
   </a>
   <!-- Android -->
-  <a href="https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample">
+  <a href="#">
     <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
   </a>
   <!-- Web -->
-  <a href="https://docs.expo.io/workflow/web/">
+  <a href="#">
     <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
   </a>
 </p>
+</p>
+<br/>
+<br/>
+
+
 
 ## 🚀 How to use
 
 - Install packages with `yarn` or `npm install`.
-  - If you have native iOS code run `npx pod-install`
 - Run `yarn start` to start the bundler.
-- Open the project in a React runtime to try it:
-  - iOS: [Client iOS](https://itunes.apple.com/app/apple-store/id982107779)
-  - Android: [Client Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample)
-  - Web: Any web browser
 
-## Adding Native Code
+<br>
 
-This project can be run from a web browser or the Expo client app. You may find that you want to add more native code later on. You can do this by ejecting the project and rebuilding it yourself.
+## 📱 About
 
-- Run `yarn eject` to create the native projects.
-- You can still run your project in the web browser or Expo client, you just won't be able to access any new native modules you add.
+This Project  is about **Notes** . User can **Create, Read, Update & Delete** Notes. App have **Nice UI**, also It is Easy to use. 
+- When user uses App for first time he/she have to register his/her name. 
 
-## Publishing
+<p align="center">
+    <img src="img\UserRegister.png" alt="UserRegister" width="200px" >
+</p>
 
-- Deploy the native app to the App store and Play store using this guide: [Deployment](https://docs.expo.io/distribution/app-stores/).
-- Deploy the website using this guide: [Web deployment](https://docs.expo.io/distribution/publishing-websites/).
+- After registering when user go to next screen where an App provides nice **Greeting massage with User's Name**, on this screen user can now add notes by just click on the add notes button.
 
-## 📝 Notes
+<p align="center">
+    <img src="img\MainScreenBlank.png" alt="MainScreenBlank" width="200px" >
+</p>
 
-- Learn more about [Universal React](https://docs.expo.io/).
-- See what API and components are [available in the React runtimes](https://docs.expo.io/versions/latest/).
-- Find out more about developing apps and websites: [Guides](https://docs.expo.io/guides/).
+- By clicking **Add Notes** button user get the add note form which allows user to add  **Note Title** and **Note Description**. only if user add any character in form then the cancel button is showed otherwise its hidden. after adding note user can just click on add button to add note to storage.
+
+<p align="center">
+    <img src="img\BlankNoteModal.png" alt="BlankNoteModal" width="200px" >
+    <img src="img\CreateNote.png" alt="CreateNote" width="200px" >
+</p>
+
+- After adding notes now user can search the notes by **Search bar**. and if user wants to cancel the search he/she can simply click on cancel icon.  
+
+<p align="center">
+    <img src="img\MainScreen.png" alt="MainScreen" width="200px" >
+    <img src="img\Search.png" alt="Search" width="200px" >
+</p>
+
+- Notes can be seen by just clicking on them, on this screen user can see the Note and also on which date that notes was **Created or Updated details**. also user can **Edit or Delete** Note from Here
+
+<p align="center">
+    <img src="img\ShowNoteCreated.png" alt="ShowNoteCreated" width="200px" >
+</p>
+
+- Edit Note
+
+<p align="center">
+    <img src="img\EditingNoteModal.png" alt="EditingNoteModal" width="200px" >
+    <img src="img\ShowNoteUpdated.png" alt="ShowNoteUpdated" width="200px" >
+</p>
+
+- Delete Note
+
+<p align="center">
+    <img src="img\DeleteNote.png" alt="DeleteNote" width="200px" >
+</p>
+
+
+<br/>
+<br/>
+
+## Built With
+
+<br/>
+
+* <img align="left" alt="ReactNative" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />&nbsp;  **React Native**
+
+<br/>
+
+* <img align="left" alt="Async Storage" width="26px" src="img\database.png" />&nbsp;  **Async Storage**
+
+

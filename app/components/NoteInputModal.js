@@ -63,14 +63,14 @@ const NoteInputModal = ({ visible, onClose, onSubmit, note, isEdit }) => {
             <View style={styles.container}> 
                 <TextInput 
                     value={title}
-                    placeholder='Title' 
+                    placeholder='Note Title' 
                     style={[styles.input, styles.title]}
                     onChangeText={(text)=> handleOnChangeText(text, 'title')} 
                 /> 
                 <TextInput 
                     value={desc}
                     multiline 
-                    placeholder='Note' 
+                    placeholder='Note Description' 
                     style={[styles.input, styles.desc]}
                     onChangeText={(text)=> handleOnChangeText(text, 'desc')} 
                 />
@@ -96,8 +96,8 @@ const NoteInputModal = ({ visible, onClose, onSubmit, note, isEdit }) => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal:20,
-        paddingTop:15,
+        paddingHorizontal:30,
+        paddingTop:30,
     },
     input: {
         borderBottomWidth:2,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
     },
     desc:{
-        height:150,
+        height:200,
         // marginBottom:15,
         
     },
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     btnContainer:{
         flexDirection:'row',
         justifyContent:'center',
-        paddingVertical:15,
+        paddingVertical:30,
     },
     
 });
