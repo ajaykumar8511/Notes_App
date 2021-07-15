@@ -18,7 +18,7 @@ const width = Dimensions.get('window').width - 40;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.PRIMARY,
+        backgroundColor: colors.DARK_BG,
         width: width / 2 - 10,
         padding: 8,
         borderRadius: 10,
@@ -36,10 +36,13 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
-        fontSize: 17,
+        fontSize: 18,
+        color: colors.PRIMARY,
+    },
+    desc: {
+        fontSize: 15,
         color: colors.LIGHT,
     },
-    desc: {},
 });
 
 

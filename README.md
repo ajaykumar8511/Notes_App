@@ -67,6 +67,12 @@ This Project  is about **Notes** . User can **Create, Read, Update & Delete** No
     <img src="img\Search.png" alt="Search" width="200px" >
 </p>
 
+- if serch results are not available then user get this.
+
+<p align="center">
+    <img src="img\Search_not_found.png" alt="Search" width="200px" >
+</p>
+
 - Notes can be seen by just clicking on them, on this screen user can see the Note and also on which date that notes was **Created or Updated details**. also user can **Edit or Delete** Note from Here
 
 <p align="center">
@@ -94,8 +100,7 @@ This Project  is about **Notes** . User can **Create, Read, Update & Delete** No
 
 <br/>
 
-* <img align="left" alt="ReactNative" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />&nbsp;  **React Native**
-
+* <img align="left" alt="Async Storage" width="26px" src="img\react-native.png" />&nbsp;  **React Native**
 <br/>
 
 * <img align="left" alt="Async Storage" width="26px" src="img\database.png" />&nbsp;  **Async Storage**

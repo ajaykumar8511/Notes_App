@@ -24,11 +24,12 @@ const SearchBar = ({containerStyle, value, onChangeText, onClear}) => {
 }; 
 
 const styles = StyleSheet.create({
+    
     searchBar: {
         borderWidth: 1,
-        borderColor: colors.PRIMARY,
+        borderColor: colors.DARK,
         height:40,
-        borderRadius:40,
+        borderRadius:10,
         paddingLeft:10,
         fontSize: 16,
         

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     },
     textInput: {
         borderWidth: 2,
-        borderColor: colors.PRIMARY,
+        borderColor: colors.DARK_BG,
         color:colors.PRIMARY,
         width,
         height: 40,

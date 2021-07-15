@@ -21,7 +21,7 @@ const RoundIconBtn = ({antIconName, size, color, style, onPress}) => {
 
 const styles = StyleSheet.create({
     icon: {
-        backgroundColor: colors.PRIMARY,
+        backgroundColor: colors.DARK_BG,
         padding: 15,
         borderRadius: 50,
         elevation: 5,

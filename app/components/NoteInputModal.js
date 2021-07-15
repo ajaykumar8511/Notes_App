@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     },
     input: {
         borderBottomWidth:2,
-        borderBottomColor: colors.PRIMARY,
+        borderBottomColor: colors.DARK_BG,
         fontSize:20,
         color:colors.DARK,
     },
